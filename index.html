@@ -2,94 +2,50 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="theme-color" content="#07100d">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#05070b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icon-192.png">
 <title>PROTOCOLO: SOMBRA</title>
 <style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;height:100%;overflow:hidden;background:#050908;color:#e9f1eb;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
-body{display:flex;justify-content:center}#app{width:min(100vw,1000px);height:100dvh;display:flex;flex-direction:column;background:#07100d}
-header{height:68px;flex:0 0 68px;padding:9px 14px;display:flex;justify-content:space-between;align-items:center;background:#09140f;border-bottom:1px solid #20352a}
-.brand{font-weight:950;letter-spacing:2px}.sub{font-size:9px;color:#718679;letter-spacing:1.5px}.stats{display:flex;gap:6px}.pill{font-size:10px;color:#7f9386;border:1px solid #263d30;border-radius:10px;padding:7px 9px;background:#0c1913}.pill b{color:#edf5ee}
-#stage{position:relative;flex:1;min-height:0;padding:7px;display:flex;align-items:center;justify-content:center}
-canvas{width:100%;height:100%;object-fit:contain;border:1px solid #263d30;border-radius:15px;background:#07100c;touch-action:none}
-#toast{position:absolute;top:16px;left:50%;transform:translateX(-50%);background:#0a1711ee;border:1px solid #365542;border-radius:10px;padding:8px 12px;font-size:11px;opacity:0;transition:.2s;pointer-events:none;z-index:5;white-space:nowrap}
-#controls{height:170px;flex:0 0 170px;padding:10px 13px;background:#08120e;border-top:1px solid #20352a;display:flex;gap:10px;align-items:center}
-#squad{width:45%;height:100%;display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.soldier{border:1px solid #294334;background:#0c1913;color:#dfeae2;border-radius:11px;text-align:left;padding:8px;font-size:10px;font-weight:800}.soldier.sel{border-color:#9bdc72;box-shadow:inset 0 0 0 1px #9bdc7244}.soldier small{display:block;color:#718679;font-weight:500;margin-top:2px}
-#actions{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:6px}.btn{border:1px solid #294334;background:#102119;color:#edf5ee;border-radius:11px;font-weight:850;font-size:10px;min-height:48px}.btn:active{transform:scale(.97)}.go{background:#1b3526;border-color:#47734d}.alert{background:#30251b;border-color:#765b37}.wide{grid-column:span 2}
-.overlay{position:absolute;inset:0;background:#030806ed;z-index:10;display:flex;align-items:center;justify-content:center;padding:18px}.hidden{display:none}.card{width:min(92%,440px);background:#0b1711;border:1px solid #304b39;border-radius:20px;padding:24px;box-shadow:0 25px 90px #000c}.card h1{margin:0 0 4px;font-size:28px;letter-spacing:2px}.card p{font-size:13px;line-height:1.55;color:#91a398}.objective{margin:16px 0;padding:13px;background:#0e1e15;border-left:3px solid #9bdc72;font-size:12px;line-height:1.5}.card button{width:100%;padding:13px;margin-top:7px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#05070b;color:#eaf0f7;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+body{touch-action:none}
+#app{width:100%;height:100dvh;display:flex;flex-direction:column;background:radial-gradient(circle at 50% -30%,#182131,#05070b 62%)}
+header{height:62px;min-height:62px;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1d2938;background:#080c13e8;backdrop-filter:blur(10px)}
+.logo{display:flex;gap:9px;align-items:center}.mark{width:38px;height:38px;border-radius:9px;background:linear-gradient(145deg,#d6dde6,#5f6e7d);color:#091018;display:grid;place-items:center;font-weight:1000}.logo b{font-size:16px;letter-spacing:.09em}.logo small{display:block;color:#8492a4;font-size:8px;letter-spacing:.12em}
+.hud{display:flex;gap:6px}.chip{background:#0c131d;border:1px solid #263548;border-radius:9px;padding:7px 9px;font-size:10px;color:#8d9db0}.chip strong{color:#e9f1fa;font-size:12px}
+#stage{position:relative;flex:1;min-height:0;display:grid;place-items:center;padding:7px}
+#game{width:min(100%,1200px);height:auto;max-height:calc(100dvh - 158px);aspect-ratio:44/28;border:1px solid #34475d;border-radius:13px;background:#070b10;box-shadow:0 25px 90px #000b;touch-action:none}
+#objective{position:absolute;left:18px;top:17px;max-width:250px;padding:8px 10px;background:#090f18dc;border:1px solid #293b51;border-radius:9px;color:#9eacbc;font-size:9px;pointer-events:none}
+#objective b{color:#e8eef5}
+#squad{height:105px;min-height:105px;display:flex;gap:7px;align-items:center;padding:7px 10px}
+.operator{height:91px;flex:1;max-width:210px;min-width:115px;padding:8px;border:1px solid #26384d;border-radius:11px;background:#0b121c;position:relative;text-align:left}
+.operator.sel{border-color:#6fd5b9;box-shadow:0 0 20px #4ed1ad18}.operator .num{position:absolute;right:7px;top:6px;color:#6fd5b9;font-weight:900}.operator b{display:block;font-size:12px}.operator span{display:block;color:#7f90a4;font-size:8px;margin:2px 0 7px}.bar{height:5px;border-radius:4px;background:#1b2735;overflow:hidden}.bar i{display:block;height:100%;background:#5fd8ba}.dead .bar i{background:#a33c4c}.dead{opacity:.42}
+#commands{height:58px;min-height:58px;display:flex;justify-content:center;gap:6px;padding:5px 8px;border-top:1px solid #172333;background:#070b12}
+.cmd{min-width:78px;border:1px solid #26394f;border-radius:9px;background:#0d1622;color:#dce6f0;font-size:9px;font-weight:900}.cmd.active{border-color:#6bd6bc;background:#12352f;color:#bff9e9}.cmd:active{transform:scale(.97)}
+#modal{display:none;position:absolute;inset:0;z-index:8;place-items:center;background:#03050adf;backdrop-filter:blur(8px)}
+.card{width:min(90%,450px);background:#0b121d;border:1px solid #354a61;border-radius:18px;padding:25px;text-align:center;box-shadow:0 35px 110px #000e}.tag{color:#6bd6bc;font-size:9px;font-weight:900;letter-spacing:.18em}.card h1{margin:6px 0;font-size:27px}.card p{color:#8c9caf;font-size:12px;line-height:1.5}.row{display:flex;gap:7px}.row button{flex:1}.btn{padding:11px;border:1px solid #293d55;border-radius:10px;background:#111c2a;color:#eef5fb;font-weight:900;font-size:10px}.primary{background:#16483f;border-color:#54bda8}.wide{width:100%;margin-top:7px}
+@media(max-width:760px){header{height:54px;min-height:54px}.mark{width:31px;height:31px}.logo small{display:none}.chip{padding:6px 7px}#stage{padding:4px}#game{max-height:calc(100dvh - 155px)}#squad{height:83px;min-height:83px;padding:5px 7px}.operator{height:72px;padding:6px;min-width:82px}.operator span{font-size:7px;margin-bottom:4px}.operator b{font-size:10px}.operator .num{font-size:9px}.bar{height:4px}#commands{height:55px;min-height:55px}.cmd{min-width:65px;font-size:8px}#objective{top:9px;left:9px}}
 </style>
 </head>
 <body>
 <div id="app">
-<header><div><div class="brand">PROTOCOLO: SOMBRA</div><div class="sub">OPERACIÓN 01 · PRUEBA TÁCTICA</div></div><div class="stats"><div class="pill">EQUIPO <b id="alive">4/4</b></div><div class="pill">ESTADO <b id="state">SIGILO</b></div></div></header>
-<div id="stage">
-<canvas id="game" width="900" height="560"></canvas><div id="toast"></div>
-<div id="intro" class="overlay"><div class="card"><h1>OPERACIÓN 01</h1><p>Una instalación pequeña. Un objetivo dentro. Cuatro operadores. Nadie sabe que estás aquí.</p>
-<div class="objective"><b>OBJETIVOS</b><br>1. Infiltra al equipo.<br>2. Recupera el paquete.<br>3. Llega al punto de extracción.<br><br><b>REGLA TÁCTICA:</b> puedes colocar cada soldado por separado y ejecutar el plan. Si un enemigo te ve, abandona el sigilo y responde.</div>
-<button id="start" class="btn go">INICIAR OPERACIÓN</button></div></div>
-<div id="win" class="overlay hidden"><div class="card"><h1 id="result">MISIÓN CUMPLIDA</h1><p id="resultText"></p><button id="again" class="btn go">REPETIR OPERACIÓN</button></div></div>
+<header>
+ <div class="logo"><div class="mark">S</div><div><b>PROTOCOLO: SOMBRA</b><small>TACTICAL OPERATIONS UNIT</small></div></div>
+ <div class="hud"><div class="chip">MISIÓN <strong id="mission">001</strong>/200</div><div class="chip">ESTADO <strong id="state">INICIO</strong></div></div>
+</header>
+<main id="stage">
+ <canvas id="game" width="1056" height="672"></canvas>
+ <div id="objective"></div>
+ <div id="modal"><div class="card"><div class="tag">INFORME DE OPERACIÓN</div><h1 id="resultTitle"></h1><p id="resultText"></p><div class="row"><button class="btn" id="retry">REINTENTAR</button><button class="btn primary" id="next">SIGUIENTE →</button></div><button class="btn wide" id="full">PANTALLA COMPLETA</button></div></div>
+</main>
+<section id="squad"></section>
+<nav id="commands">
+ <button class="cmd active" data-mode="move">MOVER</button><button class="cmd" data-mode="attack">ATACAR</button><button class="cmd" data-mode="cover">CUBRIR</button><button class="cmd" data-mode="hold">ESPERAR</button><button class="cmd" data-mode="stealth">SIGILO</button><button class="cmd" id="execute">EJECUTAR</button>
+</nav>
 </div>
-<div id="controls">
-<div id="squad">
-<button class="soldier sel" data-i="0">01 · ALFA<small>Asalto · seleccionado</small></button>
-<button class="soldier" data-i="1">02 · BRAVO<small>Fusilero · apoyo</small></button>
-<button class="soldier" data-i="2">03 · CHARLIE<small>Explorador · visión</small></button>
-<button class="soldier" data-i="3">04 · DELTA<small>Médico · apoyo</small></button>
-</div>
-<div id="actions">
-<button class="btn" id="move">MOVER</button><button class="btn" id="cover">CUBRIR</button>
-<button class="btn alert" id="tactical">MODO TÁCTICO</button><button class="btn" id="interact">INTERACTUAR</button>
-<button class="btn go wide" id="execute">▶ EJECUTAR ORDEN</button>
-</div>
-</div>
-</div>
-<script>
-const c=document.getElementById('game'),x=c.getContext('2d'),W=900,H=560;
-let soldiers=[],selected=0,mode='move',paused=true,tactical=false,alerted=false,objective=false,won=false,last=0;
-const enemies=[{x:610,y:175,r:13,dir:0,range:145},{x:690,y:380,r:13,dir:Math.PI,range:125}];
-const walls=[
-{x:45,y:45,w:810,h:20},{x:45,y:495,w:810,h:20},{x:45,y:45,w:20,h:450},{x:835,y:45,w:20,h:450},
-{x:260,y:65,w:20,h:160},{x:260,y:315,w:20,h:180},{x:260,y:225,w:170,h:20},
-{x:430,y:65,w:20,h:110},{x:430,y:265,w:20,h:230},{x:430,y:155,w:190,h:20},
-{x:620,y:65,w:20,h:110},{x:620,y:285,w:20,h:210}
-];
-const package={x:555,y:110,r:15}, extraction={x:780,y:90,r:24};
-function reset(){soldiers=[
-{x:100,y:430,r:11,hp:100,alive:true,tx:100,ty:430,cover:false,name:'ALFA'},
-{x:125,y:400,r:11,hp:100,alive:true,tx:125,ty:400,cover:false,name:'BRAVO'},
-{x:100,y:370,r:11,hp:100,alive:true,tx:100,ty:370,cover:false,name:'CHARLIE'},
-{x:145,y:430,r:11,hp:100,alive:true,tx:145,ty:430,cover:false,name:'DELTA'}];
-selected=0;mode='move';paused=false;tactical=false;alerted=false;objective=false;won=false;enemies[0].x=610;enemies[1].x=690;draw();toast('Selecciona un soldado y toca el mapa para darle una orden.')}
-function col(px,py,r){return walls.some(w=>{let cx=Math.max(w.x,Math.min(px,w.x+w.w)),cy=Math.max(w.y,Math.min(py,w.y+w.h));return (px-cx)**2+(py-cy)**2<r*r})}
-function visible(a,e){let dx=e.x-a.x,dy=e.y-a.y,d=Math.hypot(dx,dy);if(d>e.range)return false;let steps=Math.ceil(d/10);for(let i=1;i<steps;i++){let px=a.x+dx*i/steps,py=a.y+dy*i/steps;if(col(px,py,2))return false}return true}
-function issueAt(px,py){let s=soldiers[selected];if(!s?.alive)return; s.tx=Math.max(65,Math.min(835,px));s.ty=Math.max(65,Math.min(495,py));toast(s.name+' · orden '+(mode==='cover'?'CUBRIR':'MOVER'))}
-function moveToward(s,dt){let dx=s.tx-s.x,dy=s.ty-s.y,d=Math.hypot(dx,dy);if(d<2)return;let sp=s.cover?55:90;let nx=s.x+dx/d*sp*dt,ny=s.y+dy/d*sp*dt;if(!col(nx,s.y,s.r))s.x=nx;if(!col(s.x,ny,s.r))s.y=ny}
-function update(dt){if(paused||won)return;let anyMoving=false;soldiers.forEach(s=>{if(s.alive){moveToward(s,dt);if(Math.hypot(s.tx-s.x,s.ty-s.y)>3)anyMoving=true}});
-enemies.forEach((e,i)=>{e.x+=(i? -1:1)*22*dt;if(e.x<550)e.x=550;if(e.x>760)e.x=760;});
-if(!alerted){for(const s of soldiers)for(const e of enemies)if(s.alive&&visible(s,e)){alerted=true;toast('¡CONTACTO! Han detectado al equipo.');break}}
-if(alerted){document.getElementById('state').textContent='CONTACTO';for(const s of soldiers)for(const e of enemies)if(s.alive&&Math.hypot(s.x-e.x,s.y-e.y)<115&&!s.cover){s.hp-=7*dt;if(s.hp<=0){s.alive=false;s.hp=0}}}
-if(!objective){let s=soldiers[0];if(Math.hypot(s.x-package.x,s.y-package.y)<35){objective=true;toast('PAQUETE RECUPERADO · Dirígete a extracción.');}}
-let alive=soldiers.filter(s=>s.alive).length;document.getElementById('alive').textContent=alive+'/4';
-if(objective&&soldiers.some(s=>s.alive&&Math.hypot(s.x-extraction.x,s.y-extraction.y)<38)){won=true;paused=true;document.getElementById('result').textContent=alive===4?'MISIÓN CUMPLIDA':'OBJETIVO CUMPLIDO';document.getElementById('resultText').textContent=alive===4?'Infiltración limpia. El equipo completo llegó a extracción.':'El objetivo fue recuperado, pero hubo bajas. La operación terminó.';document.getElementById('win').classList.remove('hidden')}
-draw();}
-function draw(){x.clearRect(0,0,W,H);x.fillStyle='#07100c';x.fillRect(0,0,W,H);x.strokeStyle='#10251a';for(let gx=55;gx<850;gx+=25){x.beginPath();x.moveTo(gx,65);x.lineTo(gx,495);x.stroke()}for(let gy=65;gy<495;gy+=25){x.beginPath();x.moveTo(55,gy);x.lineTo(845,gy);x.stroke()}
-x.fillStyle='#17291e';walls.forEach(w=>x.fillRect(w.x,w.y,w.w,w.h));
-x.fillStyle=objective?'#65e6a8':'#d4a74e';x.beginPath();x.arc(package.x,package.y,package.r,0,7);x.fill();x.fillStyle='#07100c';x.font='bold 9px system-ui';x.textAlign='center';x.fillText(objective?'✓':'PKG',package.x,package.y+3);
-x.strokeStyle='#65e6a8';x.lineWidth=2;x.beginPath();x.arc(extraction.x,extraction.y,extraction.r,0,7);x.stroke();x.fillStyle='#65e6a8';x.fillText('EXTR',extraction.x,extraction.y+3);
-enemies.forEach(e=>{x.beginPath();x.moveTo(e.x,e.y);x.arc(e.x,e.y,e.range,-.65,.65);x.closePath();x.fillStyle=alerted?'rgba(255,80,80,.12)':'rgba(220,190,80,.08)';x.fill();x.beginPath();x.arc(e.x,e.y,e.r,0,7);x.fillStyle=alerted?'#ff5d67':'#d7a64b';x.fill();x.fillStyle='#17100a';x.fillText('E',e.x,e.y+3)});
-soldiers.forEach((s,i)=>{if(!s.alive)return;x.beginPath();x.arc(s.tx,s.ty,5,0,7);x.strokeStyle='#4d6b56';x.stroke();x.beginPath();x.arc(s.x,s.y,s.r,0,7);x.fillStyle=i===selected?'#9bdc72':'#72a3d8';x.fill();x.strokeStyle=i===selected?'#efffdc':'#bdd0e2';x.lineWidth=2;x.stroke();x.fillStyle='#07100c';x.font='bold 8px system-ui';x.fillText(String(i+1),s.x,s.y+3);if(s.cover){x.strokeStyle='#65e6a8';x.beginPath();x.arc(s.x,s.y,19,0,7);x.stroke()}})
-}
-c.addEventListener('pointerdown',e=>{if(paused)return;let r=c.getBoundingClientRect(),px=(e.clientX-r.left)*W/r.width,py=(e.clientY-r.top)*H/r.height;issueAt(px,py)});
-document.querySelectorAll('.soldier').forEach(b=>b.onclick=()=>{selected=+b.dataset.i;document.querySelectorAll('.soldier').forEach(q=>q.classList.remove('sel'));b.classList.add('sel')});
-document.getElementById('move').onclick=()=>{mode='move';toast('Toca el mapa para asignar una posición.')};
-document.getElementById('cover').onclick=()=>{mode='cover';soldiers[selected].cover=true;toast('Posición de cobertura seleccionada.')};
-document.getElementById('tactical').onclick=()=>{tactical=!tactical;paused=tactical;toast(tactical?'MODO TÁCTICO · planifica sin presión.':'MODO TÁCTICO DESACTIVADO')};
-document.getElementById('execute').onclick=()=>{tactical=false;paused=false;soldiers.forEach(s=>s.cover=false);toast('ORDEN EJECUTADA')};
-document.getElementById('interact').onclick=()=>{let s=soldiers[selected];if(Math.hypot(s.x-package.x,s.y-package.y)<45){objective=true;toast('PAQUETE RECUPERADO · EXTRACCIÓN');}else toast('No hay objeto interactuable cerca.')};
-document.getElementById('start').onclick=()=>{$('intro').classList.add('hidden');reset()};document.getElementById('again').onclick=()=>{$('win').classList.add('hidden');reset()};
-function $(id){return document.getElementById(id)}function toast(s){let e=$('toast');e.textContent=s;e.style.opacity=1;clearTimeout(window._toast);window._toast=setTimeout(()=>e.style.opacity=0,1800)}
-function loop(now){let dt=Math.min(.035,(now-last)/1000);last=now;update(dt);requestAnimationFrame(loop)}last=performance.now();requestAnimationFrame(loop);
-</script>
+<script src="game.js"></script>
 </body></html>
