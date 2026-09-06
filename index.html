@@ -1,46 +1,28 @@
-<!doctype html>
-<html lang="es"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#070b0d">
-<meta name="mobile-web-app-capable" content="yes">
-<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="assets/icon-192.png">
-<title>PROTOCOLO: SOMBRA</title>
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#07100c"><meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="assets/icon-192.png"><title>PROTOCOLO: SOMBRA — Battle Royale</title>
 <style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#070b0d;color:#eaf0f0;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
-body{touch-action:none}
-#app{width:100%;height:100dvh;display:flex;flex-direction:column;background:#070b0d}
-header{height:50px;min-height:50px;display:flex;align-items:center;justify-content:space-between;padding:5px 10px;background:#080d11eF;border-bottom:1px solid #28332f;z-index:4}
-.brand{display:flex;align-items:center;gap:8px}.mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(145deg,#e4e9e8,#6e7a78);color:#07100f;display:grid;place-items:center;font-weight:1000}.brand b{font-size:13px;letter-spacing:.08em}.brand small{display:block;font-size:6px;color:#7e8d88}
-.hud{display:flex;gap:5px}.chip{padding:5px 7px;border:1px solid #2b3936;border-radius:8px;background:#0b1114;color:#91a19c;font-size:8px}.chip b{color:#edf4f2}
-#stage{position:relative;flex:1;min-height:0;overflow:hidden;background:#172019;display:flex;align-items:center;justify-content:center}
-#game{display:block;width:100%;height:100%;image-rendering:auto}
-#mission{position:absolute;top:9px;left:9px;padding:6px 8px;background:#08100dcc;border:1px solid #33443e;border-radius:7px;color:#a8b6b1;font-size:7px;pointer-events:none;z-index:2}
-#status{position:absolute;left:50%;top:10px;transform:translateX(-50%);padding:6px 9px;background:#08100dcc;border:1px solid #33443e;border-radius:7px;color:#d6e0dc;font-size:8px;pointer-events:none;z-index:2;white-space:nowrap}
-#leftJoy{position:absolute;left:18px;bottom:20px;width:104px;height:104px;border-radius:50%;border:1px solid #66716e;background:#111a1ddd;box-shadow:0 8px 25px #0008;touch-action:none;z-index:5}
-#leftKnob{position:absolute;left:31px;top:31px;width:42px;height:42px;border-radius:50%;background:#dce5e2;box-shadow:0 0 15px #fff3}
-#rightPad{position:absolute;right:18px;bottom:20px;width:104px;height:104px;border-radius:50%;border:1px solid #66716e;background:#111a1ddd;box-shadow:0 8px 25px #0008;touch-action:none;z-index:5}
-#rightKnob{position:absolute;left:31px;top:31px;width:42px;height:42px;border-radius:50%;background:#b7d6c9;box-shadow:0 0 15px #9fe6ce33}
-.rbuttons{position:absolute;right:18px;bottom:137px;display:flex;gap:7px;z-index:6}
-.action{width:58px;height:42px;border-radius:12px;border:1px solid #52615d;background:#0b1216eF;color:#edf5f2;font-weight:1000;font-size:8px;box-shadow:0 6px 18px #0008}
-.action.fire{width:72px;height:72px;border-radius:50%;border-color:#9b6b5c;background:#321b18eF;color:#ffd9cf;font-size:11px}
-.weaponbar{position:absolute;right:18px;bottom:248px;display:flex;gap:5px;z-index:6}
-.weapon{min-width:58px;height:32px;border-radius:9px;border:1px solid #52615d;background:#0b1216eF;color:#aab7b3;font-size:7px;font-weight:900}.weapon.sel{border-color:#6fd2b5;color:#d8fff2;background:#12332beF}
-#squad{position:absolute;left:9px;bottom:10px;display:flex;gap:4px;z-index:3}
-.cardop{padding:4px 6px;border:1px solid #30403b;border-radius:7px;background:#09100fe8;color:#dce5e2;font-size:7px;min-width:55px}.cardop.sel{border-color:#6fd2b5}.cardop b{display:block;font-size:8px}.bar{height:3px;background:#26312e;margin-top:3px;border-radius:3px;overflow:hidden}.bar i{display:block;height:100%;background:#64c9aa}
-#modal{display:none;position:absolute;inset:0;z-index:10;place-items:center;background:#020506dd;backdrop-filter:blur(6px)}
-.modalcard{width:min(88%,430px);padding:24px;border:1px solid #3c4c48;border-radius:18px;background:#0b1216;text-align:center}.modalcard h1{margin:6px 0}.modalcard p{color:#93a39f;font-size:11px}.row{display:flex;gap:6px}.btn{flex:1;padding:11px;border-radius:9px;border:1px solid #40504b;background:#10191d;color:#e9f0ee;font-weight:900;font-size:9px}.primary{border-color:#59b99d;background:#153d33}
-@media(max-width:760px){.brand small{display:none}.brand b{font-size:11px}.chip{padding:5px}.rbuttons{bottom:130px}.weaponbar{bottom:218px}.action.fire{width:66px;height:66px}.action{width:54px;height:39px}.leftJoy,#rightPad{width:96px;height:96px}.leftKnob,#rightKnob{left:28px;top:28px}}
-</style></head>
-<body><div id="app">
-<header><div class="brand"><div class="mark">S</div><div><b>PROTOCOLO: SOMBRA</b><small>TOP-DOWN TACTICAL OPERATIONS</small></div></div>
-<div class="hud"><div class="chip">MISIÓN <b id="mn">001</b>/200</div><div class="chip">❤️ <b id="hp">100</b></div><div class="chip">🎒 <b id="ammo">30</b></div></div></header>
-<main id="stage"><canvas id="game" width="1152" height="768"></canvas>
-<div id="mission"></div><div id="status">LISTO</div>
-<div id="leftJoy"><div id="leftKnob"></div></div><div id="rightPad"><div id="rightKnob"></div></div>
-<div class="weaponbar"><button class="weapon sel" data-w="rifle">RIFLE<br>30</button><button class="weapon" data-w="smg">SMG<br>45</button><button class="weapon" data-w="shotgun">ESCOPETA<br>8</button></div>
-<div class="rbuttons"><button class="action" id="grenade">💣<br>GRANADA</button><button class="action fire" id="fire">FUEGO</button><button class="action" id="medic">✚<br>MÉDICO</button></div>
-<div id="squad"></div>
-<div id="modal"><div class="modalcard"><b style="color:#6fd2b5">INFORME DE OPERACIÓN</b><h1 id="mt">MISIÓN CUMPLIDA</h1><p id="mm"></p><div class="row"><button class="btn" id="retry">REINTENTAR</button><button class="btn primary" id="next">SIGUIENTE →</button></div></div></div>
-</main></div><script src="game.js"></script></body></html>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#060a08;color:#eef5ef;font-family:system-ui,sans-serif}body{touch-action:none}
+#app{height:100dvh;position:relative;background:#09110d}#game{width:100%;height:100%;display:block}
+#top{position:absolute;inset:0 0 auto 0;height:50px;display:flex;align-items:center;justify-content:space-between;padding:5px 10px;background:#060c09d9;border-bottom:1px solid #34443a;z-index:5;pointer-events:none}
+.brand{display:flex;align-items:center;gap:7px}.mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(145deg,#e7eee9,#739386);color:#07110d;display:grid;place-items:center;font-weight:1000}.brand b{font-size:12px;letter-spacing:.07em}.brand small{display:block;font-size:6px;color:#84948c}.hud{display:flex;gap:5px}.chip{padding:5px 7px;border:1px solid #304039;border-radius:8px;background:#09100de8;font-size:8px;color:#9cadA4}.chip b{color:#fff}
+#zone{position:absolute;top:60px;left:50%;transform:translateX(-50%);padding:6px 10px;border:1px solid #9e7350;border-radius:8px;background:#1a110ce8;color:#ffd6a5;font-size:8px;z-index:5;pointer-events:none}
+#minimap{position:absolute;right:9px;top:60px;width:115px;height:80px;border:1px solid #67766e;border-radius:8px;background:#0a110dd9;z-index:5;pointer-events:none}
+#leftJoy,#aimPad{position:absolute;bottom:18px;width:105px;height:105px;border-radius:50%;border:1px solid #718079;background:#0d1713d9;box-shadow:0 7px 25px #0009;z-index:10;touch-action:none}
+#leftJoy{left:18px}#aimPad{right:18px}.knob{position:absolute;left:31px;top:31px;width:43px;height:43px;border-radius:50%;background:#dfe9e3;box-shadow:0 0 18px #dfe9e333}
+#actions{position:absolute;right:20px;bottom:138px;display:grid;grid-template-columns:repeat(2,58px);gap:7px;z-index:11}.act{height:43px;border-radius:11px;border:1px solid #69766f;background:#0b1410eF;color:#eef6f1;font-size:7px;font-weight:1000}.fire{grid-column:1/3;width:76px;height:76px;border-radius:50%;justify-self:center;border-color:#b47865;background:#321b16;color:#ffd9cf;font-size:11px}
+#weapons{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:11}.gun{min-width:65px;height:37px;border-radius:9px;border:1px solid #56635d;background:#09110feF;color:#b8c4bf;font-size:7px;font-weight:900}.gun.sel{border-color:#78d5b5;color:#e2fff3;background:#12392f}
+#squad{position:absolute;left:8px;top:58px;display:flex;flex-direction:column;gap:4px;z-index:6}.op{min-width:76px;padding:4px 6px;border:1px solid #364740;border-radius:7px;background:#08100de8;font-size:6px}.op b{font-size:8px;display:block}.bar{height:3px;background:#26322c;border-radius:3px;margin-top:3px}.bar i{display:block;height:100%;background:#68d0ad}
+#pickup{display:none;position:absolute;left:50%;bottom:112px;transform:translateX(-50%);padding:9px 12px;border:1px solid #d2b467;border-radius:10px;background:#19140ceF;color:#ffe7a7;font-size:8px;font-weight:900;z-index:12}
+#modal{display:none;position:absolute;inset:0;z-index:20;place-items:center;background:#020503dd;backdrop-filter:blur(6px)}.card{width:min(88%,440px);padding:23px;border:1px solid #53635b;border-radius:18px;background:#0a120f;text-align:center}.card h1{margin:5px}.card p{color:#9cadA5;font-size:11px}.row{display:flex;gap:7px}.btn{flex:1;padding:11px;border-radius:9px;border:1px solid #52615a;background:#111c18;color:#eef5f1;font-weight:900;font-size:9px}.primary{border-color:#5fc7a5;background:#153b31}
+@media(max-width:760px){.brand small{display:none}.brand b{font-size:10px}.hud{gap:3px}.chip{padding:5px}.leftJoy,#aimPad{width:96px;height:96px}.knob{left:28px;top:28px}.actions{right:18px;bottom:128px}.fire{width:68px;height:68px}.gun{min-width:58px}}
+</style></head><body><div id="app"><canvas id="game" width="1152" height="768"></canvas>
+<div id="top"><div class="brand"><div class="mark">S</div><div><b>PROTOCOLO: SOMBRA</b><small>BATTLE ROYALE TÁCTICO · TOP-DOWN</small></div></div><div class="hud"><div class="chip">MISIÓN <b id="mn">001</b>/200</div><div class="chip">👥 <b id="alive">19</b></div><div class="chip">☠ <b id="kills">0</b></div><div class="chip">❤️ <b id="hp">100</b></div></div></div>
+<div id="zone">⚠ ZONA SEGURA · <b id="zt">02:00</b></div><canvas id="minimap" width="230" height="160"></canvas>
+<div id="squad"></div><div id="pickup">BOTÍN CERCA</div>
+<div id="leftJoy"><div class="knob" id="lk"></div></div><div id="aimPad"><div class="knob" id="ak"></div></div>
+<div id="actions"><button class="act" id="grenade">💣 GRANADA</button><button class="act" id="medic">✚ MÉDICO</button><button class="act" id="enter">🚙 VEHÍCULO</button><button class="act" id="loot">🎒 RECOGER</button><button class="act fire" id="fire">FUEGO</button></div>
+<div id="weapons"><button class="gun sel" data-w="rifle">RIFLE<br><span>30</span></button><button class="gun" data-w="smg">SMG<br><span>45</span></button><button class="gun" data-w="shotgun">ESCOPETA<br><span>8</span></button></div>
+<div id="modal"><div class="card"><b style="color:#71d4b1">PROTOCOLO DE COMBATE</b><h1 id="mt">MISIÓN CUMPLIDA</h1><p id="mm"></p><div class="row"><button class="btn" id="retry">REINTENTAR</button><button class="btn primary" id="next">SIGUIENTE →</button></div></div></div></div>
+<script src="game.js"></script></body></html>
