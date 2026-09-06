@@ -1,11 +1,5 @@
-PROTOCOLO: SOMBRA v0.2
-Misiones generadas: 200
-Misiones validadas: 200/200
-Fallos: 0
-
-Comprobaciones por misión:
-- Ruta de inicio a objetivo.
-- Ruta de objetivo a extracción.
-- Ruta directa inicio a extracción.
-- Enemigos y coberturas no ocupan inicio/objetivo/extracción.
-- Mapas independientes del azar durante la partida.
+PROTOCOLO: SOMBRA v0.3
+200/200 misiones presentes y validadas por ruta inicio→objetivo→extracción.
+4 operadores con silueta militar original dibujada en canvas.
+Combate, cobertura, sigilo, médico, granadas y pausa táctica incluidos.
+JS syntax: OK.
