@@ -1,7 +1,7 @@
 {
   "name": "PROTOCOLO: SOMBRA \u2014 Battle Royale",
   "short_name": "SOMBRA",
-  "id": "./sombra-v05",
+  "id": "./sombra-v1",
   "start_url": "./",
   "scope": "./",
   "display": "fullscreen",
@@ -10,8 +10,8 @@
     "standalone"
   ],
   "orientation": "landscape",
-  "background_color": "#07100c",
-  "theme_color": "#07100c",
+  "background_color": "#07100b",
+  "theme_color": "#07100b",
   "icons": [
     {
       "src": "assets/icon-192.png",

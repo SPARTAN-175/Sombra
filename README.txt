@@ -1,6 +1,9 @@
-PROTOCOLO: SOMBRA v0.5 — BATTLE ROYALE TOP-DOWN
-Sube todos los archivos a la raíz de GitHub Pages.
-Controles táctiles: joystick izquierdo = mover; joystick derecho = apuntar; FUEGO = disparar; GRANADA; MÉDICO; VEHÍCULO; RECOGER; armas.
-El mapa es abierto, con edificios transitables, loot, enemigos, vehículos y zona segura.
-200 mapas validados por conectividad inicio→objetivo→extracción.
-Sonidos generados localmente con WebAudio; no requiere archivos de audio externos.
+SOMBRA v1.0 — BATTLE ROYALE TOP-DOWN
+Sube TODO a la raíz de GitHub Pages.
+Jugador único: tú haces todas las funciones.
+Joystick izquierdo: mover. Joystick derecho: apuntar. FUEGO: mantener.
+Granada, curación, vehículo, loot y cambio de armas.
+Enemigos dibujados como soldados y agrupados en escuadras.
+Mapa abierto con casas dibujadas y habitaciones/interiores.
+Zona segura, minimapa, objetivo y extracción.
+30 sectores generados y validados. Sonidos locales WebAudio. PWA fullscreen.

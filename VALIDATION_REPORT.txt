@@ -1,10 +1,9 @@
-SOMBRA v0.5
-200/200 mapas generados.
-200/200: ruta inicio -> objetivo -> extracción comprobada por BFS.
-200/200: >=40 objetos de loot.
-200/200: >=18 enemigos.
-200/200: >=3 vehículos.
-Canvas con cámara top-down y escala uniforme.
-Controles táctiles y WebAudio local incluidos.
-Bug crítico anterior corregido: granadas se inicializan dentro del estado del jugador.
-JS syntax: OK (Node --check).
+SOMBRA v1.0 VALIDACIÓN
+30/30 mapas: inicio -> objetivo -> extracción comprobado por BFS.
+30/30: 100 objetos de loot.
+30/30: 40 enemigos distribuidos en 8 escuadras.
+30/30: 5 vehículos.
+Jugador único; sin escuadrón aliado.
+Assets originales incluidos: soldado, caja, vehículo e iconos.
+Service Worker registrado.
+JavaScript comprobado con Node --check.
