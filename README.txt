@@ -1,1 +1,4 @@
-Sube todo a la raíz de GitHub Pages. Reinstala la PWA después de actualizar. SOMBRA: escuadra de 4, órdenes tácticas, combate, cobertura, sigilo, médico, granadas y 200 misiones.
+SUBIR TODO A LA RAÍZ DE GITHUB PAGES.
+Después de actualizar, desinstala la PWA anterior de SOMBRA y vuelve a instalarla para forzar la nueva caché.
+Controles táctiles: izquierda = movimiento; derecha = apuntado; FUEGO = disparo; GRANADA; MÉDICO; armas.
+Vehículo: doble toque cerca del vehículo o tecla E en teclado.

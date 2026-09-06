@@ -1,5 +1,8 @@
-PROTOCOLO: SOMBRA v0.3
-200/200 misiones presentes y validadas por ruta inicio→objetivo→extracción.
-4 operadores con silueta militar original dibujada en canvas.
-Combate, cobertura, sigilo, médico, granadas y pausa táctica incluidos.
-JS syntax: OK.
+PROTOCOLO: SOMBRA v0.4
+200/200 mapas de misión presentes.
+Conectividad validada: inicio → objetivo → extracción.
+Cada misión incluye edificios, interiores, cobertura, enemigos y vehículo.
+Controles: joystick movimiento + pad de apuntado + fuego + granada + cambio de armas + médico.
+Velocidades: personaje a pie y vehículo separadas.
+PWA: fullscreen horizontal, caché offline.
+JavaScript comprobado con Node.

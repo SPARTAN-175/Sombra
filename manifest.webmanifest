@@ -1,7 +1,7 @@
 {
-  "name": "PROTOCOLO: SOMBRA \u2014 Tactical Operations",
+  "name": "PROTOCOLO: SOMBRA \u2014 Top Down Tactical",
   "short_name": "SOMBRA",
-  "id": "./sombra-v03",
+  "id": "./sombra-v04",
   "start_url": "./",
   "scope": "./",
   "display": "fullscreen",
@@ -10,8 +10,8 @@
     "standalone"
   ],
   "orientation": "landscape",
-  "background_color": "#050810",
-  "theme_color": "#050810",
+  "background_color": "#070b0d",
+  "theme_color": "#070b0d",
   "icons": [
     {
       "src": "assets/icon-192.png",
